@@ -28,7 +28,7 @@
     <Prefer32Bit>true</Prefer32Bit>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-    <StartArguments>--task-name "Working BSS" --percentage-done 8 --minutes 32 --more-or-less less</StartArguments>
+    <StartArguments>--task-name "Working" --percentage-done 86 --minutes 79 --word-count 1034 --more-or-less more</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
