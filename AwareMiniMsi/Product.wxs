@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix 
+	xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+	<Product Id="*" Name="AwareMini" Language="1033" Version="1.0.0.0" Manufacturer="Buckling Springs LLC" UpgradeCode="7f98cabe-f8f5-4fb8-a047-347e2e2fc8ce">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perUser" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="AwareMini" Level="1">
+			<ComponentGroupRef Id="AwareMiniFiles" />
+			<ComponentGroupRef Id="AwareMiniAddOnConfig" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="LocalAppDataFolder">
+				<Directory Id="INSTALLFOLDER" Name="AwareMini" />
+				<Directory Id="ADDONFOLDER" Name="AwareAddOns" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="AwareMiniFiles" Directory="INSTALLFOLDER">
+
+			<Component Id="AwareMiniExecutable" Guid="*">
+				<File Name="$(var.AwareMini.TargetFileName)" Source="$(var.AwareMini.TargetPath)"  KeyPath="yes"/>
+			</Component>
+
+			<!-- Dependencies -->
+
+			<Component Id="FSharpCoreAssembly" Guid="*">
+				<File Name="FSharp.Core.dll" Source="$(var.AwareMini.TargetDir)FSharp.Core.dll"  KeyPath="yes"/>
+			</Component>
+
+			<Component Id="UnionArgParserAssembly" Guid="*">
+				<File Name="UnionArgParser.dll" Source="$(var.AwareMini.TargetDir)UnionArgParser.dll"  KeyPath="yes"/>
+			</Component>
+
+			<Component Id="LatoRegularFont" Guid="*">
+				<File Name="Lato-Reg.ttf" Source="$(var.AwareMini.TargetDir)Lato-Reg.ttf"  KeyPath="yes"/>
+			</Component>
+
+
+		</ComponentGroup>
+
+		<ComponentGroup Id="AwareMiniAddOnConfig" Directory="ADDONFOLDER">
+			<Component Id="AwareMiniConfig" Guid="*">
+				<File Id="AwareMiniConfigFile" Name="AwareMini.mbroadcast.xml" Source="$(var.AwareMini.TargetDir)AwareMini.mbroadcast.xml"  KeyPath="yes" />
+
+				<util:XmlFile Id="SetWorkingDirectory"
+						Action="setValue"
+						ElementPath="/AwareAddOn/WorkingDirectory"
+						Value="[INSTALLFOLDER]"
+						File="[ADDONFOLDER]AwareMini.mbroadcast.xml"
+						SelectionLanguage="XPath"
+						Sequence="1"/>
+			</Component>
+		</ComponentGroup>
+		
+		
+	</Fragment>
+</Wix>

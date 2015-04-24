@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AwareAddOn enabled="true">
+	<Program><![CDATA[ AwareMini.exe ]]> </Program>
+	<WorkingDirectory></WorkingDirectory>
+	<Arguments> <![CDATA[ --{CurrentDateAndTime} ]]>  </Arguments>
+</AwareAddOn>
+
