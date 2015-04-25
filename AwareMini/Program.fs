@@ -145,6 +145,7 @@ module Program =
         member x.ShowInformation (p : Progress) =
             f.Text <- sprintf "%s - %s" p.taskName (p.refreshedAt.ToShortTimeString())
             progress <- p
+            panel.Invalidate()
             
             
 
