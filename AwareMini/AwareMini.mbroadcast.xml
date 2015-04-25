@@ -2,6 +2,6 @@
 <AwareAddOn enabled="true">
 	<Program><![CDATA[ AwareMini.exe ]]> </Program>
 	<WorkingDirectory></WorkingDirectory>
-	<Arguments> <![CDATA[ --{CurrentDateAndTime} ]]>  </Arguments>
+	<Arguments> <![CDATA[ --task-name {TASK_NAME} --percentage-done {PERCENTAGE_DONE} --minutes {MINUTES} --word-count {WORD_COUNT} --more-or-less {MORE_OR_LESS} ]]>  </Arguments>
 </AwareAddOn>
 
